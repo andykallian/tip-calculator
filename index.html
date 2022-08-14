@@ -17,27 +17,27 @@
     <section class="left">
       <form class="inputs">
         <label class="label-bill" for="bill">Bill</label>
-        <input id="bill" type="text" placeholder="0">
+        <input id="bill" type="number" placeholder="0" maxlength="7" oninput="maxLengthBill()">
       </form>
 
      <div class="grid">
       <h3>Select Tip %</h3>
       <div class="row-top">
-        <button>5%</button>
-        <button>10%</button>
-        <button>15%</button>
+        <button onclick="fivePercent()" id="five">5%</button>
+        <button onclick="tenPercent()" id="ten">10%</button>
+        <button onclick="fifteenPercent()" id="fifteen">15%</button>
       </div>
 
       <div class="row-down">
-        <button id="absolute">25%</button>
-        <button>50%</button>
-        <input type="text" placeholder="Custom">
+        <button onclick="twentyFivePercent()" id="absolute" class="twenty-five">25%</button>
+        <button onclick="fiftyPercent()" id="fifty">50%</button>
+        <input type="number" id="custom" placeholder="Custom" maxlength="3" oninput="maxLengthPercentage()" onclick="customPercent()">
       </div>    
      </div>
 
       <form class="inputs">
         <label class="label-people" for="number-of-people">Number of People</label>
-        <input id="number-of-people" type="text" placeholder="0" >     
+        <input id="number-of-people" type="number" maxlength="2" oninput="maxLengthPeople()" placeholder="0">     
       </form>
 
     </section>
@@ -49,53 +49,25 @@
             <p>Tip Amount</p>
             <p>/ person</p>
           </div>
-          <h2>$0.00</h2>
+          <h2 id="amount-person">$0.00</h2>
         </div>
         <div class="amount-total">
           <div class="paragraphs">
             <p>Total</p>
             <p>/ person</p>
           </div>
-          <h2>$0.00</h2>
+          <h2 id="amount-total">$0.00</h2>
         </div>
       </div>
-      <button class="reset">RESET</button>
+      <button  class="reset">RESET</button>
 
     </section>
 
   </main>
 
-
-
-
-
-
-
-
-
-
+  
 
   <script src="index.js"></script>
   
-<!-- 
-  Bill
-
-  Select Tip %
-  5%
-  10%
-  15%
-  25%
-  50%
-  Custom
-
-  Number of People
-
-  Tip Amount
-  / person
-
-  Total
-  / person
-
-  Reset -->
 </body>
 </html>
