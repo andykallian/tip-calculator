@@ -5,6 +5,19 @@ const Bill = document.querySelector('#bill')
 const NumberOfPeople = document.querySelector('#number-of-people')
 const customTip = document.querySelector('#custom')
 
+const button = document.querySelector('.reset')
+const five = document.querySelector('#five')
+const ten = document.querySelector('#ten')
+const fifteen = document.querySelector('#fifteen')
+const twentyFive = document.querySelector('.twenty-five')
+const fifty = document.querySelector('#fifty')
+
+
+const amountPerson = document.querySelector('#amount-person')
+const amountTotal = document.querySelector('#amount-total')
+
+/* limits function on the amount of characters allowed on the inputs */
+
 
 
 function maxLengthPercentage(){
@@ -26,132 +39,103 @@ function maxLengthPeople(){
 }
 
 
+/* -------------- calculations functions ----------------- */
 
-/* -------------- maths ----------------- */
+// [Bill, NumberOfPeople, customTip].forEach((element) =>{
 
-const button = document.querySelector('.reset')
-const five = document.querySelector('#five')
-const ten = document.querySelector('#ten')
-const fifteen = document.querySelector('#fifteen')
-const twentyFive = document.querySelector('.twenty-five')
-const fifty = document.querySelector('#fifty')
+//     element.addEventListener('keyup', function(e){
+
+//         let percentageString = ''
+    
+//         percentageString = e.target.value
+    
+//         let percent = parseInt(percentageString)
+//         percent = percent / 100
+    
+//         let billValue = parseInt(Bill.value)
+//         let peopleNumber = parseInt(NumberOfPeople.value)
+//         let dividedBill = billValue / peopleNumber 
+    
+//         let percentage = (billValue * percent)
+    
+//         if(isNaN(billValue) || isNaN(peopleNumber) || isNaN(percentage)){
+//             amountPerson.innerHTML = '$0.00'
+//             amountTotal.innerHTML = '$0.00'
+//         }else{
+//             amountPerson.innerHTML = `$${(percentage / peopleNumber).toFixed(2)}` 
+//             amountTotal.innerHTML = `$${(dividedBill + (percentage / peopleNumber)).toFixed(2)}`
+//         }
+//     })
+// })
 
 
-const amountPerson = document.querySelector('#amount-person')
-const amountTotal = document.querySelector('#amount-total')
 
 
-function customPercent(){
-
-    let isFocused = (document.activeElement === customTip);
-    let peopleNumber = parseInt(NumberOfPeople.value)
-
-    if(isFocused && peopleNumber > '1'){
+[Bill, NumberOfPeople].forEach(element =>{
+    element.addEventListener('keyup', function(e){
         let billValue = parseInt(Bill.value)
-        let customValue = customTip.value / 100
+        let peopleNumber = parseInt(NumberOfPeople.value)
 
-        let percentage = (billValue * customValue).toFixed(2)
+        if(!isNaN(billValue) && !isNaN(peopleNumber)){
+            customTip.classList.add("show")
+        }
+    })
+})
 
-        let dividedBill = billValue / peopleNumber 
+customTip.addEventListener('keyup', function(e){
 
-        amountPerson.innerHTML = percentage / peopleNumber
-        amountTotal.innerHTML = dividedBill + (percentage / peopleNumber)
+    let percentageString = e.target.value
 
-    }else{
+    let percent = parseInt(percentageString)
+    percent = percent / 100
+
+    let billValue = parseInt(Bill.value)
+    let peopleNumber = parseInt(NumberOfPeople.value)
+    let dividedBill = billValue / peopleNumber 
+
+    let percentage = (billValue * percent)
+
+    if(isNaN(billValue) && isNaN(peopleNumber)){
         amountPerson.innerHTML = '$0.00'
         amountTotal.innerHTML = '$0.00'
+    }else{
+        amountPerson.innerHTML = `$${(percentage / peopleNumber).toFixed(2)}` 
+        amountTotal.innerHTML = `$${(dividedBill + (percentage / peopleNumber)).toFixed(2)}`
+    }
+})
+
+
+function calculateTip(percent){
+    let billValue = parseInt(Bill.value)
+    let percentage = (billValue * percent)
+
+    let peopleNumber = parseInt(NumberOfPeople.value)
+
+    let dividedBill = billValue / peopleNumber 
+
+    if(isNaN(billValue) || isNaN(peopleNumber)){
+        amountPerson.innerHTML = '$0.00'
+        amountTotal.innerHTML = '$0.00'      
+    }else if(billValue === 0 || peopleNumber === 0){
+        amountPerson.innerHTML = '$0.00'
+        amountTotal.innerHTML = '$0.00'       
+    }else{
+        amountPerson.innerHTML = `$${(percentage / peopleNumber).toFixed(2)}` 
+        amountTotal.innerHTML = `$${(dividedBill + (percentage / peopleNumber)).toFixed(2)}`
     }
 
-}
-
-function fivePercent(){
-    let billValue = parseInt(Bill.value)
-
-
-    let percentage = (billValue * 0.05).toFixed(2)
-
-
-    let peopleNumber = parseInt(NumberOfPeople.value)
-
-    console.log(peopleNumber)
-
-    let dividedBill = billValue / peopleNumber 
-
-    amountPerson.innerHTML = percentage / peopleNumber
-    amountTotal.innerHTML = dividedBill + (percentage / peopleNumber)
-}
-
-function tenPercent(){
-    let billValue = parseInt(Bill.value)
-
-
-    let percentage = (billValue * 0.1).toFixed(2)
-
-
-    let peopleNumber = parseInt(NumberOfPeople.value)
-
-    console.log(peopleNumber)
-
-    let dividedBill = billValue / peopleNumber 
-
-    amountPerson.innerHTML = percentage / peopleNumber
-    amountTotal.innerHTML = dividedBill + (percentage / peopleNumber)
-    
-}
-
-function fifteenPercent(){
-    let billValue = parseInt(Bill.value)
-
-
-    let percentage = (billValue * 0.15).toFixed(2)
-
-
-    let peopleNumber = parseInt(NumberOfPeople.value)
-
-    console.log(peopleNumber)
-
-    let dividedBill = billValue / peopleNumber 
-
-    amountPerson.innerHTML = percentage / peopleNumber
-    amountTotal.innerHTML = dividedBill + (percentage / peopleNumber)
 
 }
 
-function twentyFivePercent(){
 
-    let billValue = parseInt(Bill.value)
+function reset(){
+    amountPerson.innerHTML = '$0.00'
+    amountTotal.innerHTML = '$0.00'
 
-
-    let percentage = (billValue * 0.25).toFixed(2)
-
-
-    let peopleNumber = parseInt(NumberOfPeople.value)
-
-    console.log(peopleNumber)
-
-    let dividedBill = billValue / peopleNumber 
-
-    amountPerson.innerHTML = percentage / peopleNumber
-    amountTotal.innerHTML = dividedBill + (percentage / peopleNumber)
-
-}
-
-function fiftyPercent(){
-
-    let billValue = parseInt(Bill.value)
-
-
-    let percentage = (billValue * 0.5).toFixed(2)
-
-
-    let peopleNumber = parseInt(NumberOfPeople.value)
-
-    console.log(peopleNumber)
-
-    let dividedBill = billValue / peopleNumber 
-
-    amountPerson.innerHTML = percentage / peopleNumber
-    amountTotal.innerHTML = dividedBill + (percentage / peopleNumber)
+    Bill.value = ''
+    NumberOfPeople.value = ''
+    customTip.value = ''
+    customTip.classList.remove("show")
 
 }
 
