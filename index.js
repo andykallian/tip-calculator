@@ -133,7 +133,7 @@ function reset(){
     amountTotal.innerHTML = '$0.00'
 
     Bill.value = ''
-    NumberOfPeople.value = ''
+    NumberOfPeople.value = 1
     customTip.value = ''
     customTip.classList.remove("show")
 
