@@ -1,4 +1,4 @@
-/* -------------- inputs limits ----------------- */
+/* -------------- getting elements ----------------- */
 
 
 const Bill = document.querySelector('#bill')
@@ -16,8 +16,8 @@ const fifty = document.querySelector('#fifty')
 const amountPerson = document.querySelector('#amount-person')
 const amountTotal = document.querySelector('#amount-total')
 
-/* limits function on the amount of characters allowed on the inputs */
 
+/* limits function on the amount of characters allowed in inputs */
 
 
 function maxLengthPercentage(){
@@ -38,37 +38,7 @@ function maxLengthPeople(){
     }
 }
 
-
 /* -------------- calculations functions ----------------- */
-
-// [Bill, NumberOfPeople, customTip].forEach((element) =>{
-
-//     element.addEventListener('keyup', function(e){
-
-//         let percentageString = ''
-    
-//         percentageString = e.target.value
-    
-//         let percent = parseInt(percentageString)
-//         percent = percent / 100
-    
-//         let billValue = parseInt(Bill.value)
-//         let peopleNumber = parseInt(NumberOfPeople.value)
-//         let dividedBill = billValue / peopleNumber 
-    
-//         let percentage = (billValue * percent)
-    
-//         if(isNaN(billValue) || isNaN(peopleNumber) || isNaN(percentage)){
-//             amountPerson.innerHTML = '$0.00'
-//             amountTotal.innerHTML = '$0.00'
-//         }else{
-//             amountPerson.innerHTML = `$${(percentage / peopleNumber).toFixed(2)}` 
-//             amountTotal.innerHTML = `$${(dividedBill + (percentage / peopleNumber)).toFixed(2)}`
-//         }
-//     })
-// })
-
-
 
 
 [Bill, NumberOfPeople].forEach(element =>{
@@ -123,8 +93,6 @@ function calculateTip(percent){
         amountPerson.innerHTML = `$${(percentage / peopleNumber).toFixed(2)}` 
         amountTotal.innerHTML = `$${(dividedBill + (percentage / peopleNumber)).toFixed(2)}`
     }
-
-
 }
 
 
@@ -138,15 +106,3 @@ function reset(){
     customTip.classList.remove("show")
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
