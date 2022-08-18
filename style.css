@@ -294,7 +294,7 @@ input::placeholder{
 
     .container{
         width: 90%;
-        height: 95%;
+        height: fit-content;
         padding: 1rem;
 
         flex-direction: column;
